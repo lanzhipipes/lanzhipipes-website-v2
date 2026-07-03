@@ -1,0 +1,14 @@
+{
+  "name": "Lanzhi Pipe Technology",
+  "short_name": "Lanzhi Pipe",
+  "icons": [
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1456a0",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
