@@ -1,25 +1,24 @@
+const menuToggle = document.querySelector(".menu-toggle");
+const inquiryForm = document.querySelector("#inquiry-form");
+const formMessage = document.querySelector(".form-message");
 
-document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', function () {
-      nav.classList.toggle('is-open');
-    });
-  }
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("nav-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-  const form = document.querySelector('#inquiry-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      const action = form.getAttribute('action') || '';
-      if (action.includes('your-id')) {
-        e.preventDefault();
-        const msg = document.querySelector('.form-message');
-        if (msg) {
-          msg.textContent = 'Please replace the Formspree ID before using this form online.';
-          msg.style.display = 'block';
-        }
-      }
+  document.querySelectorAll(".nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      document.body.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
-  }
-});
+  });
+}
+
+if (inquiryForm && formMessage) {
+  inquiryForm.addEventListener("submit", () => {
+    formMessage.textContent = "Sending your inquiry. Thank you for contacting Lanzhi Pipeline.";
+    formMessage.classList.add("is-visible");
+  });
+}
